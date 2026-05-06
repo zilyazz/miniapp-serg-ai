@@ -284,8 +284,8 @@ docker-compose ps
 
 ### Проблема: "Invalid model"
 **Решение:** Проверьте, что в .env файле правильно указаны:
-- `OPENAI_API_KEY`
-- `OPENAI_BASE_URL=https://api.together.xyz/v1`
+- `OPENROUTER_API_KEY`
+- `OPENROUTER_BASE_URL=https://openrouter.ai/api/v1`
 
 ### Проблема: Ошибки валидации данных
 **Решение:** Проверьте формат JSON. Все поля обязательны:
@@ -298,4 +298,3 @@ docker-compose ps
 ## 🎉 Готово!
 
 Если всё работает, вы увидите интерпретацию совместимости в заданном формате!
-

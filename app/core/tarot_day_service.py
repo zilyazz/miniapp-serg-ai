@@ -43,7 +43,7 @@ class TarotDayService:
         ]
 
     def _get_processed_model(self, model: str) -> str:
-        processed_model = model
+        processed_model = self.config.get('model_name', model)
         if model in ['yandex-gpt-lite', 'yandexgpt-lite', 'yandex-gpt-3.5-turbo', 'yandexgpt-5-lite']:
             processed_model = f"gpt://{self.config['yandex_cloud_folder']}/yandexgpt/latest"
         return processed_model

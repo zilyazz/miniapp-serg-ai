@@ -356,7 +356,7 @@ class HoroscopeService:
             )
             
             # Обработка специальных моделей Yandex
-            processed_model = model
+            processed_model = self.config.get('model_name', model)
             if model in ['yandex-gpt-lite', 'yandexgpt-lite', 'yandex-gpt-3.5-turbo', 'yandexgpt-5-lite']:
                 processed_model = f"gpt://{self.config['yandex_cloud_folder']}/yandexgpt/latest"
             
@@ -419,4 +419,3 @@ except Exception as e:
     # Приложение не сможет работать без сервиса. Установим horoscope_service = None,
     # чтобы эндпоинт мог вернуть 503 и будем проверять в эндпоинте.
     horoscope_service = None
-

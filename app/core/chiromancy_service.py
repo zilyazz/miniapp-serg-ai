@@ -183,7 +183,7 @@ class ChiromancyService:
             system_prompt, user_prompt = self._generate_prompt(hand=hand)
             
             # Обработка специальных моделей Yandex
-            processed_model = model
+            processed_model = self.config.get('model_name', model)
             if model in ['yandex-gpt-lite', 'yandexgpt-lite', 'yandex-gpt-3.5-turbo', 'yandexgpt-5-lite']:
                 processed_model = f"gpt://{self.config['yandex_cloud_folder']}/yandexgpt/latest"
             
@@ -261,4 +261,3 @@ try:
 except Exception as e:
     logger.critical(f'Не удалось создать экземпляр ChiromancyService: {e}', exc_info=True)
     chiromancy_service = None
-

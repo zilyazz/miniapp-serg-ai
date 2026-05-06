@@ -229,13 +229,14 @@ class DivinationService:
 
         system_prompt, user_prompt = self._generate_prompt(processed_runes, theme, type, premium)
 
+        processed_model = self.config.get('model_name', model)
         if model in ['yandex-gpt-lite', 'yandexgpt-lite', 'yandex-gpt-3.5-turbo', 'yandexgpt-5-lite']:
-            model = f"gpt://{self.config['yandex_cloud_folder']}/yandexgpt/latest"
+            processed_model = f"gpt://{self.config['yandex_cloud_folder']}/yandexgpt/latest"
         try:
             print(system_prompt, user_prompt)
             logger.info(f'Отправка запроса к AI API: Руны={processed_runes}, Тема={theme}, Тип={type}')
             response = self.client.chat.completions.create(
-                model=model,
+                model=processed_model,
                 messages=[
                     {'role': 'system', 'content': system_prompt},
                     {'role': 'user', 'content': user_prompt},
