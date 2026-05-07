@@ -18,3 +18,12 @@ services:
       driver: json-file
       options:
         tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+    networks:
+      default:
+      shared-miniapp-serg:
+        aliases:
+          - neural
+
+networks:
+  shared-miniapp-serg:
+    external: true
